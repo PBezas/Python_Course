@@ -15,3 +15,10 @@
 
 # print(answer4)
 
+lst1 = [1, 2 ,3 ,5]
+lst2 = [1, 3 ,6 ,7]
+
+lst3 = list(lst1).append(lst2)
+
+
+print(lst3)
