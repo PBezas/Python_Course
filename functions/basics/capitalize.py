@@ -8,4 +8,4 @@
 def capitalize(string):
     return f'{string[0].upper()}{string[1:]}'
 
-print(capitalize([1,2, 3]))
+print(capitalize('panos'))
