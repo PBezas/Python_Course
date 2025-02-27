@@ -5,14 +5,6 @@
 
 # Specifications
 
-### Card
-
-# Each instance of Card  should have a suit ("Hearts", "Diamonds", "Clubs", or "Spades").
-
-# Each instance of Card  should have a value ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K").
-
-# Card 's __repr__  method should return the card's value and suit (e.g. "A of Clubs", "J of Diamonds", etc.)
-
 ### Deck
 
 # Each instance of Deck  should have a cards attribute with all 52 possible instances of Card .
@@ -29,17 +21,8 @@
 
 # Deck  should have an instance method called deal_hand  which accepts a number and uses the _deal  method to deal a list of cards from the deck and return that list of cards.
 
+from card import Card
 from random import shuffle
-
-
-class Card:
-    def __init__(self, value, suit):
-        self.suit = suit
-        self.value = value
-
-    def __repr__(self):
-        return f"{self.value} of {self.suit}"
-
 
 class Deck:
     def __init__(self):
@@ -71,25 +54,28 @@ class Deck:
     def __repr__(self):
         return f"Deck of {self.count()} cards"
 
+    def __iter__(self):
+        return iter(self.cards)
+
     def count(self):
         return len(self.cards)
 
     # ------------------1st way(mine)--------------------
 
     def _deal(self, amount):
-      dealt_cards = []
+        dealt_cards = []
 
-      if amount <= self.count():
-          while amount > 0:
-              dealt_cards.append(self.cards.pop())
-              amount -= 1
-      else:
-          while self.count() > 0:
-              dealt_cards.append(self.cards.pop())
+        if amount <= self.count():
+            while amount > 0:
+                dealt_cards.append(self.cards.pop())
+                amount -= 1
+        else:
+            while self.count() > 0:
+                dealt_cards.append(self.cards.pop())
 
-          raise ValueError("All cards have been dealt")
+            raise ValueError("All cards have been dealt")
 
-      return dealt_cards
+        return dealt_cards
 
     # -------------------2nd way------------------------
 
@@ -139,7 +125,14 @@ my_deck = Deck()
 # # print(my_deck.shuffle())
 # print(my_deck.count())
 
-print(my_deck.deal_hand(52))
-print(my_deck.count())
-print(my_deck.deal_hand(3))
 print(my_deck.shuffle())
+print(f'Your hand: {my_deck.deal_hand(47)}')
+# print(my_deck.count())
+# print(my_deck.deal_hand(5))
+# print(my_deck.count())
+
+cards_left = []
+for card in my_deck:
+    cards_left.append(card)
+
+print(f'Cards left in the deck: {cards_left}')
