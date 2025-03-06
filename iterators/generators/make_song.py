@@ -40,16 +40,5 @@ def make_song(num=99, bev="soda"):
 
 default_song = make_song(10, "soda")
 
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
-print(next(default_song))
+for num in range(12):
+    print(next(default_song))
