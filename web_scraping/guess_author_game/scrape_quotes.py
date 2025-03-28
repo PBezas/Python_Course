@@ -1,15 +1,15 @@
 from bs4 import BeautifulSoup
 import requests
 
-base_url = "https://quotes.toscrape.com/"
+BASE_URL = "https://quotes.toscrape.com/"
 
 all_quotes = []
 
 
-def get_all_quotes():
+def scrape_quotes():
     url = "/page/1"
     while True:
-        html = requests.get(base_url + url)
+        html = requests.get(BASE_URL + url)
         soup = BeautifulSoup(html.text, "html.parser")
 
         quotes = soup.find_all(class_="quote")
